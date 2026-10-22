@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d17b3afe7065bb41ad9a0b9d4165a0b, type: 3}
+  m_Name: Intro_Dialogue
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueData
+  lines:
+  - characterName: "\u63A2\u5075"
+    characterPortrait: {fileID: 21300000, guid: d071b5dc65707b4469a0361c3450636c, type: 3}
+    dialogueText: "\u3069\u3046\u3084\u3089\u3001\u4F55\u304B\u304C\u96A0\u3055\u308C\u3066\u3044\u308B\u3088\u3046\u3060\u3002"
+    choices: []
+  - characterName: "\u63A2\u5075"
+    characterPortrait: {fileID: 21300000, guid: d071b5dc65707b4469a0361c3450636c, type: 3}
+    dialogueText: "\u3069\u3053\u304B\u3089\u8ABF\u3079\u3088\u3046\u304B\uFF1F"
+    choices:
+    - choiceText: "\u90E8\u5C4B\u3092\u8ABF\u3079\u308B"
+      nextLineIndex: 2
+      flagToSet: 
+    - choiceText: "\u6642\u8A08\u3092\u898B\u308B"
+      nextLineIndex: 4
+      flagToSet: FoundClock
+    - choiceText: "\u5ECA\u4E0B\u3078\u884C\u304F"
+      nextLineIndex: 6
+      flagToSet: 
+  - characterName: "\u63A2\u5075"
+    characterPortrait: {fileID: 21300000, guid: d071b5dc65707b4469a0361c3450636c, type: 3}
+    dialogueText: "\u90E8\u5C4B\u3092\u8ABF\u3079\u3066\u307F\u3088\u3046"
+    choices: []
+  - characterName: "\u63A2\u5075"
+    characterPortrait: {fileID: 21300000, guid: d071b5dc65707b4469a0361c3450636c, type: 3}
+    dialogueText: "\u3042"
+    choices: []
+  - characterName: "\u63A2\u5075"
+    characterPortrait: {fileID: 21300000, guid: d071b5dc65707b4469a0361c3450636c, type: 3}
+    dialogueText: "\u6642\u8A08\u3092\u8ABF\u3079\u3066\u307F\u3088\u3046"
+    choices: []
+  - characterName: "\u63A2\u5075"
+    characterPortrait: {fileID: 21300000, guid: d071b5dc65707b4469a0361c3450636c, type: 3}
+    dialogueText: "\u3044"
+    choices: []
+  - characterName: "\u63A2\u5075"
+    characterPortrait: {fileID: 21300000, guid: d071b5dc65707b4469a0361c3450636c, type: 3}
+    dialogueText: "\u4E00\u5EA6\u3001\u5ECA\u4E0B\u3092\u78BA\u8A8D\u3057\u3088\u3046"
+    choices: []
