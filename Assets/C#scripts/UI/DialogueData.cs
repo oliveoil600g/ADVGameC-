@@ -13,6 +13,9 @@ public class ChoiceData
     public string choiceText;
     public int nextLineIndex;
     public string flagToSet;
+
+    // 表示するために必要なフラグ
+    public string requiredFlag;
 }
 
 
@@ -27,4 +30,7 @@ public class DialogueLine
     public string dialogueText;
 
     public ChoiceData[] choices;
+
+    // このセリフを表示するために必要なフラグ
+    public string requiredFlag;
 }

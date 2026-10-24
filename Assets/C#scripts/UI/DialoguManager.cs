@@ -140,7 +140,7 @@ public class DialoguManager : MonoBehaviour
     private void ShowChoices()
     {
         DialogueLine currentDialogue =
-            dialogueData.lines[currentLine];
+        dialogueData.lines[currentLine];
 
         if (currentDialogue.choices == null ||
             currentDialogue.choices.Length == 0)
@@ -151,27 +151,62 @@ public class DialoguManager : MonoBehaviour
         choicePanel.SetActive(true);
         nextButton.gameObject.SetActive(false);
 
-        for (int i = 0; i < choiceButtons.Length; i++)
+        int buttonIndex = 0;
+
+        // いったん全部の選択肢を非表示にする
+        foreach (Button button in choiceButtons)
         {
-            if (i < currentDialogue.choices.Length)
+            button.gameObject.SetActive(false);
+        }
+
+        // 表示条件を満たす選択肢だけ表示する
+        for (int i = 0;
+             i < currentDialogue.choices.Length;
+             i++)
+        {
+            ChoiceData choice = currentDialogue.choices[i];
+
+            // 必要なフラグがある場合、ONかどうか確認
+            if (!string.IsNullOrEmpty(choice.requiredFlag))
             {
-                choiceButtons[i].gameObject.SetActive(true);
-
-                choiceButtons[i].GetComponentInChildren<TMP_Text>().text =
-                    currentDialogue.choices[i].choiceText;
-
-                int choiceIndex = i;
-
-                choiceButtons[i].onClick.RemoveAllListeners();
-
-                choiceButtons[i].onClick.AddListener(
-                    () => SelectChoice(choiceIndex)
-                );
+                if (FlagManager.Instance == null ||
+                    !FlagManager.Instance.HasFlag(choice.requiredFlag))
+                {
+                    continue;
+                }
             }
-            else
+
+            // ボタン数の上限を超えたら終了
+            if (buttonIndex >= choiceButtons.Length)
             {
-                choiceButtons[i].gameObject.SetActive(false);
+                Debug.LogWarning("選択肢のボタン数が足りません！");
+                break;
             }
+
+            Button button = choiceButtons[buttonIndex];
+
+            button.gameObject.SetActive(true);
+
+            button.GetComponentInChildren<TMP_Text>().text =
+                choice.choiceText;
+
+            // 選択肢の番号を保存
+            int choiceIndex = i;
+
+            button.onClick.RemoveAllListeners();
+
+            button.onClick.AddListener(
+                () => SelectChoice(choiceIndex)
+            );
+
+            buttonIndex++;
+        }
+
+        // 表示できる選択肢がなかった場合
+        if (buttonIndex == 0)
+        {
+            choicePanel.SetActive(false);
+            nextButton.gameObject.SetActive(true);
         }
     }
     private void SelectChoice(int choiceIndex)
